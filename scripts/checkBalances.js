@@ -3,7 +3,8 @@ require("dotenv").config();
 const { testnetInfo } = require('@axelar-network/axelar-local-dev');
 const { ethers, Wallet } = require('ethers');
 
-const chains =  testnetInfo;
+// const chains =  testnetInfo;
+let chains = require("../info/testnet.json")
 const deployer_key = process.env.EVM_PRIVATE_KEY;
 const address = new Wallet(deployer_key).address;
 (async () => {
