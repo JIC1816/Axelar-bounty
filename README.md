@@ -10,7 +10,7 @@ In order to contribute to the documentation, here are some updates:
 
 First of all, before using the commands to switch to the version of node specified by the "axelar-local-gmp-examples" repository, it is preferable to first try the version you already have. In principle there should be no problems. In my case it was like that.
 
-Then, to deploy the "call-contract-with-token" contract, it is first necessary to change the index.js file associated with said contract. The fundamental change is to specify the Gas Limit, as shown here:
+Then, to deploy the "call-contract-with-token" contract, it is first necessary to change the index.js file associated with that contract. The fundamental change is to specify the Gas Limit, as shown here (credits to @hakymulla):
 
 ```bash
 const sendTx = await source.contract.sendToMany(destination.name, destination.distributionExecutable, accounts, 'aUSDC', amount,
@@ -19,4 +19,10 @@ const sendTx = await source.contract.sendToMany(destination.name, destination.di
             gasLimit: 3e6
         });
 ```
+Once the contract has been deployed, to run the tests it is necessary to update the "testnet.json" file located in the "info" folder. As you can see, that file contains the rpc and chainId of the Ropsten network, which is now deprecated. So the important thing is to change it to Goerli's data. In any case, if it doesn't work that way, it is possible to call the function using a network other than Ethereum's testen, eg Moonbeam and Polygon.
+
+If everything went well, you can see here (https://testnet.axelarscan.io) that if you put your address it will show you the cross-chain transactions made thanks to Axelar.
+
+
+
         
